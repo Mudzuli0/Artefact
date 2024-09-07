@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Footprint Awareness</title>
+    <style>
+        body {
+            font-family: 'arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            background-color: #e5ebec;
+        }
+        .sidebar {
+            width: 100%;
+            background-color: #0288d1;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .sidebar h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sidebar h1 img {
+            margin-right: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .sidebar ul li {
+            margin: 15px;
+        }
+        .sidebar ul li a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, padding 0.3s;
+        }
+        .sidebar ul li a:hover {
+            background-color: #4fc3f7;
+            color: #01579b;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .content h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .content p {
+            font-size: 1.5em;
+        }
+
+        @media (min-width: 600px) {
+            .sidebar {
+                width: 250px;
+                height: 100vh;
+                position: fixed;
+            }
+            .sidebar h1 {
+                justify-content: flex-start;
+            }
+            .sidebar ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .content {
+                margin-left: 250px;
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 599px) {
+            .hamburger {
+                display: block;
+                cursor: pointer;
+                font-size: 1.5em;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .sidebar ul {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+            }
+            .sidebar ul.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1><img src="logo.avif" alt="DigitalGuardian Logo">DigitalGuardian</h1>
+        <div class="hamburger" onclick="toggleMenu()"></div>
+        <ul id="menu">
+            <li><a href="#" onclick="showContent('about')">Digital Footprint</a></li>
+            <li><a href="#" onclick="showContent('importance')">Importance</a></li>
+            <li><a href="#" onclick="showContent('guidelines')">Managing</a></li>
+            <li><a href="#" onclick="showContent('harms')">Harms and Statistics</a></li>
+        </ul>
+    </div>
+    <div class="content" id="content">
+        <h1 id="page-title"></h1>
+        <p id="page-content">
+            Welcome to DigitalGuardian, your comprehensive platform for promoting digital awareness and safeguarding online identities.<br /><br />
+            DigitalGuardian is designed to help individuals understand, manage, and protect their digital footprints.<br /><br />
+            This platform provides essential resources, strategies, and insights to foster responsible digital behavior, ensuring that users can navigate the online world safely and confidently.
+        </p>
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
+        function showContent(page) {
+            const pageTitle = document.getElementById('page-title');
+            const pageContent = document.getElementById('page-content');
+        
+            if (page === 'about') {
+                pageTitle.innerText = 'What is a Digital Footprint?';
+                pageContent.innerHTML = 'A digital footprint is the trail of data you leave behind when using the internet. This includes everything from social media posts and online purchases to search history and emails.<br /><br />In today\'s digital age, our online actions create a lasting record, shaping our digital identities. It is crucial to be aware of what kind of information we are sharing, as this can have significant implications for privacy, security, and reputation.';
+            } else if (page === 'importance') {
+                pageTitle.innerText = 'Importance of Digital Footprints';
+                pageContent.innerHTML = 'For online users, digital footprints are essential because they shape personal and professional reputations. Every interaction on social media, websites, and apps contributes to your online image. Employers, universities, and even social connections frequently check digital footprints before making decisions.<br /><br />In fact, according to recent studies, over 70% of employers screen candidates based on their online presence. As the internet continues to be an integral part of daily life, ensuring that your digital footprint represents you accurately and positively is crucial.';
+            } else if (page === 'guidelines') {
+                pageTitle.innerText = 'Managing Digital Footprints';
+                pageContent.innerHTML = 'To manage your digital footprint effectively, follow these guidelines:<br /><br /><strong>1. Regularly Review Privacy Settings:</strong> Ensure your social media accounts and online profiles have the right privacy settings to control who sees your information.<br /><br /><strong>2. Monitor Your Online Presence:</strong> Periodically search for your name online to see what information is available about you.<br /><br /><strong>3. Be Cautious with Information Sharing:</strong> Avoid sharing sensitive personal information publicly. Be mindful of the content you post, especially on social media.<br /><br /><strong>4. Use Strong Passwords:</strong> Protect your accounts with strong, unique passwords and enable two-factor authentication wherever possible.<br /><br /><strong>5. Educate Yourself on Cybersecurity:</strong> Stay informed about common online threats like phishing and malware, and take steps to protect yourself.';
+            } else if (page === 'harms') {
+                pageTitle.innerText = 'Harms and Statistics of Digital Footprints';
+                pageContent.innerHTML = 'Digital footprints can expose individuals to privacy breaches, identity theft, and online fraud. Research shows that over 15% of people have been victims of identity theft due to oversharing online.<br /><br />Moreover, large corporations and third parties can track users’ behavior to create targeted advertising, often without users’ consent. A 2023 report revealed that over 80% of online users feel concerned about their data privacy, yet many still fail to protect their digital footprints effectively.';
+            }
+        }
+    </script>
+</body>
+</html>
